@@ -2,16 +2,16 @@ import { Link } from "react-router";
 import { currentStudent } from "@/lib/mock-data";
 
 export default function HomePage() {
-  return(
+  return (
     <>
-    <div className="flex flex-col items-center pt-2 px-4">
-      <div className="w-full max-w-2xl rounded-xl border border-gray-200 p-6">
-          <p className="font-semibold text-gray-900 mb-4">
+      <div className="flex flex-col items-center pt-2 px-4">
+        <div className="w-full max-w-2xl rounded-xl border border-border bg-card p-6">
+          <p className="mb-4 font-semibold text-foreground">
             ระบบลงทะเบียนเรียน CPE & ISNE
           </p>
           <Link
             to="/enrollment"
-            className="bg-black text-white text-sm px-4 py-2 rounded-lg hover:bg-gray-500 transition">
+            className="rounded-lg bg-primary px-4 py-2 text-sm text-primary-foreground transition hover:bg-primary/80">
             ไปหน้าลงทะเบียนเรียน
           </Link>
         </div>
