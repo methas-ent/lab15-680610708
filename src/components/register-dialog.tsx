@@ -25,6 +25,13 @@ import { UserRoundPlus } from "lucide-react";
 import { currentStudent } from "@/lib/mock-data";
 import type { Course } from "@/lib/types";
 
+function getCurrentTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  return `${hours}:${minutes}`;
+}
+
 type RegisterDialogProps = {
   availableCourses: Course[];
   onConfirm?: (courseId: string, selectedTime: string) => void;
@@ -34,7 +41,7 @@ export function RegisterDialog({ availableCourses, onConfirm }: RegisterDialogPr
   const [fullName, setFullName] = useState(
     `${currentStudent.firstName} ${currentStudent.lastName}`
   );
-  const [time, setTime] = useState("09:15");
+  const [time, setTime] = useState(getCurrentTime);
   const [program, setProgram] = useState(currentStudent.program);
 
   const [open, setOpen] = useState(false); // true = แสดง Dialog
@@ -44,6 +51,12 @@ export function RegisterDialog({ availableCourses, onConfirm }: RegisterDialogPr
     setFullName(`${currentStudent.firstName} ${currentStudent.lastName}`);
     setProgram(currentStudent.program);
   }, []);
+
+  useEffect(() => {
+    if (open) {
+      setTime(getCurrentTime());
+    }
+  }, [open]);
 
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault(); // ไม่ให้หน้าเว็บ reload
