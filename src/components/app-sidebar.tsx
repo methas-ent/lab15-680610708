@@ -1,4 +1,4 @@
-import { BookOpen, Calendar, Home, Settings } from "lucide-react";
+import { BookOpen, Calendar, ChevronDown, Home, Settings } from "lucide-react";
 import { Link, useLocation } from "react-router";
 
 import {
@@ -11,13 +11,17 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+import { currentUser } from "@/lib/mock-data";
 
 const items = [
   { title: "หน้าแรก", url: "/", icon: Home },
   { title: "ลงทะเบียนเรียน", url: "/enrollment", icon: BookOpen },
-  { title: "ตารางเรียน", url: "/schedule", icon: Calendar },
-  { title: "ตั้งค่า", url: "/settings", icon: Settings },
 ];
 
 export function AppSidebar() {
@@ -49,6 +53,26 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+
+      <SidebarFooter className="p-2">
+        <Separator className="mb-2" />
+
+        <button className="flex w-full items-center gap-3 rounded-lg p-2 text-left transition hover:bg-muted/60">
+          <Avatar>
+            <AvatarImage src={currentUser.avatar} alt={currentUser.nickname} />
+            <AvatarFallback>{currentUser.nickname.slice(0, 1)}</AvatarFallback>
+          </Avatar>
+
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-medium">{currentUser.nickname}</p>
+            <Badge variant="secondary" className="mt-1">
+              {currentUser.role}
+            </Badge>
+          </div>
+
+          <ChevronDown className="size-4 shrink-0 text-muted-foreground" />
+        </button>
+      </SidebarFooter>
     </Sidebar>
   );
 }

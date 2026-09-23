@@ -20,3 +20,10 @@ interface Enrollment {
   enrolledAt?: string; // เวลาที่ลงทะเบียน แบบ ISO 8601 เช่น "2026-09-13T14:15:00"
 }
 export type { Enrollment };
+
+// for user
+interface User {
+  fullName: string;
+  studentId: string;
+}
+export type { User };

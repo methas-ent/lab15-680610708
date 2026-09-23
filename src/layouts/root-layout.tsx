@@ -9,6 +9,8 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
+import Footer from "@/components/footer";
+
 export default function RootLayout() {
   return (
     <SidebarProvider>
@@ -22,9 +24,12 @@ export default function RootLayout() {
           </div>
           <ModeToggle />
         </header>
+
         <main className="flex-1 p-4">
           <Outlet />
         </main>
+
+        <Footer/>
       </SidebarInset>
     </SidebarProvider>
   );

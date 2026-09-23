@@ -1,4 +1,11 @@
-import type { Student, Course, Enrollment } from "@/lib/types";
+import type { Student, Course, Enrollment, User } from "@/lib/types";
+
+export const user: User[] = [
+  {
+    fullName: "Methas Naisoo",
+    studentId: "680610708",
+  },
+];
 
 export const students: Student[] = [
   {
@@ -20,6 +27,12 @@ export const students: Student[] = [
     lastName: "Blunt",
     program: "ISNE",
     courses: ["269101", "261497"],
+  },
+  {
+    studentId: "680610708",
+    firstName: "Methas",
+    lastName: "Naisoo",
+    program: "CPE",
   },
 ];
 
@@ -66,14 +79,14 @@ export const enrollments: Enrollment[] = [
 ];
 
 // นักศึกษาที่ "ล็อกอินอยู่" — ไม่มีระบบ Login/Role ในแลปนี้ จึงกำหนดไว้ที่นี่ที่เดียว
-export const CURRENT_STUDENT_ID = "650610002";
+export const CURRENT_STUDENT_ID = "680610708";
 export const currentStudent = students.find(
   (s) => s.studentId === CURRENT_STUDENT_ID,
 )!;
 
 // ข้อมูลส่วนแสดงสถานะผู้ใช้ที่ Sidebar (ข้อ 5 ของโจทย์) — แก้เป็นชื่อเล่นและรูปของตัวเอง
 export const currentUser = {
-  nickname: "Cillian",
+  nickname: "Thachy",
   role: "STUDENT" as "STUDENT" | "ADMIN",
-  avatar: "/profile.svg", // วางรูปไว้ที่ public/
+  avatar: "/profile.jpg", // วางรูปไว้ที่ public/
 };
