@@ -1,4 +1,4 @@
-import { BookOpen, Calendar, ChevronDown, Home, Settings } from "lucide-react";
+import { BookOpen, ChevronDown, Home } from "lucide-react";
 import { Link, useLocation } from "react-router";
 
 import {
